@@ -70,7 +70,7 @@ export const useGetPosts = () => {
       return lastId;
     },
      // Add initialPageParam here based on your requirements
-     initialPageParam: 1,
+     initialPageParam: undefined,
   });
 };
 
