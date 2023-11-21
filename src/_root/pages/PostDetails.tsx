@@ -10,6 +10,7 @@ import { useUserContext } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
 import Loader from "@/components/shared/Loader";
 import PostStats from "@/components/shared/PostStats";
+import GridPostList from "@/components/shared/GridPostList";
 
 const PostDetails = () => {
   const navigate = useNavigate();
@@ -89,7 +90,7 @@ const PostDetails = () => {
                 </div>
               </Link>
 
-              <div className="flex-center gap-4">
+              <div className="flex-center ">
                 <Link
                   to={`/update-post/${post?.$id}`}
                   className={`${user.id !== post?.creator.$id && "hidden"}`}
@@ -105,7 +106,7 @@ const PostDetails = () => {
                 <Button
                   onClick={handleDeletePost}
                   variant="ghost"
-                  className={`ost_details-delete_btn ${
+                  className={`ost_details-delete_btn pr-0 ${
                     user.id !== post?.creator.$id && "hidden"
                   }`}
                 >

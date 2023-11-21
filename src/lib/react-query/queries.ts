@@ -65,6 +65,19 @@ export const useSearchPosts = (searchTerm: string) => {
   });
 };
 
+
+export const useGetPosts = () => {
+  return useInfiniteQuery({
+    queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
+    queryFn: getInfinitePosts,
+    getNextPageParam: (lastPage) => {
+      if (lastPage && lastPage.documents.length === 0) return null;
+      const lastId = lastPage.documents[lastPage?.documents.length - 1].$id;
+      return lastId;
+    }
+  })
+}
+
 export const useGetRecentPosts = () => {
   return useQuery({
     queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
@@ -83,6 +96,8 @@ export const useCreatePost = () => {
     },
   });
 };
+
+
 
 export const useGetPostById = (postId?: string) => {
   return useQuery({
